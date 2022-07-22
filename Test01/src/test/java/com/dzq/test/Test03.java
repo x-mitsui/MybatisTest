@@ -5,16 +5,15 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @Auther: x_mitsui
@@ -24,7 +23,7 @@ import java.util.Set;
  */
 public class Test03 {
     private SqlSession sqlSession;
-    @BeforeEach
+    @Before
     public void a(){
         SqlSessionFactoryBuilder ssfb = new SqlSessionFactoryBuilder();
         InputStream resourceAsStream=null;
@@ -60,7 +59,7 @@ public class Test03 {
 
     }
 
-    @AfterEach
+    @After
     public void b(){
         sqlSession.close();
 
