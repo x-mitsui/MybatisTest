@@ -25,7 +25,7 @@ import java.util.Set;
 public class Test02 {
     private SqlSession sqlSession;
     @BeforeEach
-    public void boot(){
+    public void a(){
         SqlSessionFactoryBuilder ssfb = new SqlSessionFactoryBuilder();
         InputStream resourceAsStream=null;
         try {
@@ -67,7 +67,7 @@ public class Test02 {
         }
     }
     @AfterEach
-    public void release(){
+    public void bb(){
         sqlSession.close();
 
     }

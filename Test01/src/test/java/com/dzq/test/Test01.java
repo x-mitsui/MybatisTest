@@ -22,7 +22,7 @@ import java.util.List;
 public class Test01 {
     private SqlSession sqlSession;
     @BeforeEach
-    public void boot(){
+    public void aaa(){
         SqlSessionFactoryBuilder ssfb = new SqlSessionFactoryBuilder();
         InputStream resourceAsStream=null;
         try {
@@ -42,7 +42,7 @@ public class Test01 {
 
     }
     @AfterEach
-    public void release(){
+    public void bbb(){
         sqlSession.close();
 
     }
