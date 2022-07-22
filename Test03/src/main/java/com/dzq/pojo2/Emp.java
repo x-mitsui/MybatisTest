@@ -1,4 +1,4 @@
-package com.dzq.pojo;
+package com.dzq.pojo2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

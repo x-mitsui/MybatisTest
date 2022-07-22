@@ -1,13 +1,14 @@
 package com.dzq.test;
 
-import com.dzq.pojo.Dept;
+import com.dzq.mapper.EmpMapper;
+import com.dzq.pojo2.Emp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 public class Test01 {
     private SqlSession sqlSession;
-    @BeforeEach
+    @Before
     public void aaa(){
         SqlSessionFactoryBuilder ssfb = new SqlSessionFactoryBuilder();
         InputStream resourceAsStream=null;
@@ -31,14 +32,16 @@ public class Test01 {
             e.printStackTrace();
         }
         SqlSessionFactory factory = ssfb.build(resourceAsStream);
-         sqlSession = factory.openSession();
+        sqlSession = factory.openSession();
     }
     @Test
     public void testFindAll(){
-
-
+        // MyBatis内部辅助构造了实现类
+        EmpMapper empImp = sqlSession.getMapper(EmpMapper.class);
+        List<Emp> empList = empImp.findAll();
+        empList.forEach(System.out::println);
     }
-    @AfterEach
+    @After
     public void bbb(){
         sqlSession.close();
 
