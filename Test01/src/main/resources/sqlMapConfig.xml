@@ -30,5 +30,6 @@
         <mapper resource="com/dzq/mapper/DeptMapper.xml"/>
         <mapper resource="com/dzq/mapper/EmpMapper.xml"/>
         <mapper resource="com/dzq/mapper/EmpMapper2.xml"/>
+        <mapper resource="com/dzq/mapper/EmpMapper3.xml"/>
     </mappers>
 </configuration>

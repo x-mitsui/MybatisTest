@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="yyy">
+<mapper namespace="zzz">
     <!--parameterType可以省略不写，mybatis可以自动判断-->
     <!--sql语句占位符为${}、#{}-->
     <!--#{}会预编译-->

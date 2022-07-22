@@ -17,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Emp implements Serializable {
-//    使用包装类
+//    使用包装类，尽量和数据库保持一致吧，免去麻烦
     private Integer EmpNo;
     private String EName;
     private String Job;
