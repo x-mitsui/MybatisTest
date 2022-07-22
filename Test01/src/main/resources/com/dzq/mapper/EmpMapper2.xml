@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yyy">
+    <!--parameterType可以省略不写，mybatis可以自动判断-->
+    <!--sql语句占位符为${}、#{}-->
+    <!--#{}会预编译-->
+    <!--如果参数为单个基本数据类型，{}中名字随意写-->
+    <select id="findEmpByEmpNo" resultType="emp" parameterType="integer">
+        select * from EMP where empno = #{empn}
+    </select>
+    <!--参数为map集合
+    查询指定部门号和指定最低薪资的员工信息
+    20号部门且薪资在1500及以上的员工信息
+    Map<String, Integer> args = new HashMap<>();
+        args.put("DepNo",20);//下方#{}使用
+        args.put("sal",1500);//下方#{}使用
+    -->
+    <select id="findEmpByEmpNoAndSalary" resultType="emp" parameterType="map">
+        select * from emp where deptNo=#{DepNo} and sal &gt;= #{sal}
+    </select>
+
+    <!--#{}中为属性名-->
+    <select id="findEmpByEmpNoAndSalary2" resultType="emp" parameterType="emp">
+        select * from emp where deptNo=#{DeptNo} and sal &gt;= #{sal}
+    </select>
+</mapper>
