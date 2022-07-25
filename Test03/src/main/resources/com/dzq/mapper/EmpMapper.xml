@@ -11,4 +11,32 @@
     <select id="findAll" resultType="emp">
         select * from emp;
     </select>
+    <select id="findByEmpNo" resultType="emp">
+        select * from emp where empno = #{EmpNo};
+    </select>
+    <select id="findEmpByDeptNoAndSalary" resultType="emp">
+        <!-- 三种写法，方法三起别名略-->
+        <!--select * from emp where deptNo = #{arg0} and sal>=#{arg1};-->
+
+        select * from emp where deptNo = #{param1} and sal>=#{param2};
+    </select>
+    <select id="findEmpByDeptNoAndSalary2" parameterType="map" resultType="Emp">
+        select * from emp where deptNo = #{depno} and sal>=#{sal};
+    </select>
+    <!--单个引用对象，括号内使用方法名-->
+    <select id="findEmpByDeptNoAndSalary3" parameterType="Emp" resultType="Emp">
+        select * from emp where deptNo = #{DeptNo} and sal>=#{Sal};
+    </select>
+    <!--多个引用参数-->
+    <select id="findEmpByDeptNoAndSalary4" resultType="Emp">
+        select * from emp where deptNo = #{arg0.DeptNo} and sal>=#{arg1.Sal};
+    </select>
+    <!--别名，别名情况下依然可以用para*...参数，但不能用arg*...-->
+    <select id="findEmpByDeptNoAndSalary5" resultType="Emp">
+        select * from emp where deptNo = #{empA.DeptNo} and sal>=#{empB.Sal};
+--         select * from emp where deptNo = #{para1.DeptNo} and sal>=#{para2};
+    </select>
+    <select id="findByName" resultType="Emp">
+        select * from emp where ename like concat('%',  #{eName},'%')
+    </select>
 </mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dzq.mapper.DeptMapper">
+
+    <!--回调传回参数需要两个属性useGeneratedKeys="true" keyProperty="deptNo"-->
+    <insert id="addDept" parameterType="Dept" useGeneratedKeys="true" keyProperty="deptNo">
+        insert into Dept values(DEFAULT ,#{DName},#{Loc});
+    </insert>
+
+</mapper>
