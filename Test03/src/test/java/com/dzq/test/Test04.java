@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -47,10 +49,10 @@ public class Test04 {
     }
 
     @Test
-    public void testFindByCondition2(){
+    public void testFindByCondition2() throws ParseException {
         EmpMapper2 empImp = sqlSession.getMapper(EmpMapper2.class);
         Emp emp = new Emp();
-        emp.setEmpNo(7782);
+        emp.setHireDate(new SimpleDateFormat("yyyy-MM-dd").parse("1981-09-28"));
         List<Emp> emps = empImp.findEmpByCondition(emp);
         emps.forEach(System.out::println);
     }

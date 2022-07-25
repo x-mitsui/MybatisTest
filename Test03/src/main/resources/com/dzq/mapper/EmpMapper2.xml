@@ -4,16 +4,71 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dzq.mapper.EmpMapper2">
     <select id="findEmpByCondition" resultType="Emp">
-        select * from emp where 1=1
-        <if test="EmpNo != null">
-            and EMPNO = #{EmpNo}
-        </if>
-        <if test="EName !=null and EName!=''">
-            and EName = #{EName}
-#             and EName like concat('%',#{EName},'%');
-        </if>
+        select * from emp
+        <where>
+            <if test="EmpNo != null">
+                and EMPNO = #{EmpNo}
+            </if>
+            <if test="EName !=null and EName!=''">
+                and EName = #{EName}
+                #             and EName like concat('%',#{EName},'%');
+            </if>
+            <if test="Job !=null and Job!=''">
+                and Job = #{Job}
+            </if>
+            <if test="MGR !=null and MGR!=''">
+                and MGR = #{MGR}
+            </if>
+            <if test="HireDate !=null">
+                and HIREDATE = #{HireDate}
+            </if>
+            <if test="Sal !=null">
+                and EName = #{EName}
+            </if>
+            <if test="Comm !=null">
+                and Comm = #{Comm}
+            </if>
+            <if test="DeptNo !=null">
+                and DeptNo = #{DeptNo}
+            </if>
+        </where>
+    </select>
+    <!--某一条件执行成功后，不继续往下执行，类似switch case-->
+    <select id="findEmpByCondition2" resultType="Emp">
+        select * from emp
+        <where>
+            <choose>
+                <when test="EmpNo != null">
+                    and EMPNO = #{EmpNo}
+                </when>
+                <when test="EName !=null and EName!=''">
+                    and EName = #{EName}
+                    #             and EName like concat('%',#{EName},'%');
+                </when>
+                <when test="Job !=null and Job!=''">
+                    and Job = #{Job}
+                </when>
+                <when test="MGR !=null and MGR!=''">
+                    and MGR = #{MGR}
+                </when>
+                <when test="HireDate !=null">
+                    and HIREDATE = #{HireDate}
+                </when>
+                <when test="Sal !=null">
+                    and EName = #{EName}
+                </when>
+                <when test="Comm !=null">
+                    and Comm = #{Comm}
+                </when>
+                <when test="DeptNo !=null">
+                    and DeptNo = #{DeptNo}
+                </when>
+                <otherwise>
+                    and 1 = 1
+                </otherwise>
+            </choose>
 
-
+        </where>
     </select>
 
 </mapper>

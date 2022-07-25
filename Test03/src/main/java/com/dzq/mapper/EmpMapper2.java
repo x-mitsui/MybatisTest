@@ -19,5 +19,7 @@ public interface EmpMapper2 {
      */
     List<Emp> findEmpByCondition(Emp emp);
 
+    List<Emp> findEmpByCondition2(Emp emp);
+
 
 }
