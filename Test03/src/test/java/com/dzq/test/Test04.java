@@ -53,7 +53,7 @@ public class Test04 {
         EmpMapper2 empImp = sqlSession.getMapper(EmpMapper2.class);
         Emp emp = new Emp();
         emp.setHireDate(new SimpleDateFormat("yyyy-MM-dd").parse("1981-09-28"));
-        List<Emp> emps = empImp.findEmpByCondition(emp);
+        List<Emp> emps = empImp.findEmpByCondition2(emp);
         emps.forEach(System.out::println);
     }
 
