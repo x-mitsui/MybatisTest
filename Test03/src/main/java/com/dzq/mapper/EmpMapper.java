@@ -43,4 +43,10 @@ public interface EmpMapper {
      */
     List<Emp> findByName(String eName);
 
+    int addEmp(Emp emp);
+
+    int deleteEmp(int empNO);
+
+    int updateEmpByEmpNo(@Param("EmpNo") int empNo,@Param("EName") String ename);
+
 }

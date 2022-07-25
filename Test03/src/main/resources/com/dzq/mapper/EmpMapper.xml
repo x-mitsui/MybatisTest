@@ -39,4 +39,17 @@
     <select id="findByName" resultType="Emp">
         select * from emp where ename like concat('%',  #{eName},'%')
     </select>
+
+
+    <insert id="addEmp" useGeneratedKeys="true" keyProperty="EmpNo">
+        insert into emp values ( DEFAULT ,#{EName},#{Job},#{MGR},#{HireDate},#{Sal},#{Comm},#{DeptNo});
+    </insert>
+
+    <delete id="deleteEmp">
+        delete from emp where empno = #{empNO};
+    </delete>
+
+    <update id="updateEmpByEmpNo">
+        update emp set ename=#{EName} where empno =#{EmpNo};
+    </update>
 </mapper>

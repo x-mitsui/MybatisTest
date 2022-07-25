@@ -15,9 +15,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @Auther: x_mitsui
@@ -25,7 +22,7 @@ import java.util.Map;
  * @Description: com.dzq.test
  * @version: 1.0
  */
-public class Test02 {
+public class Test03 {
     private SqlSession sqlSession;
 
     @Before
@@ -40,29 +37,29 @@ public class Test02 {
         SqlSessionFactory factory = ssfb.build(resourceAsStream);
         sqlSession = factory.openSession(true);
     }
+
     @Test
-    public void testAddDept(){
-        DeptMapper depImp = sqlSession.getMapper(DeptMapper.class);
-        Dept dept = new Dept();
-        dept.setDName("教学部");
-        dept.setLoc("北京");
-        System.out.println(dept);
-        depImp.addDept(dept);
-        System.out.println(dept);//通过结果观察到，主键的值填回给了引用对象
+    public void testAddEmp(){
+        EmpMapper empImp = sqlSession.getMapper(EmpMapper.class);
+        Emp emp = new Emp(null,"张三", "司机", "7566",new Date(),2800.0,null,40);
+        System.out.println(emp);
+        empImp.addEmp(emp);
+        System.out.println(emp);//通过结果观察到，主键的值填回给了引用对象
     }
 
     @Test
-    public void testAddDept2(){
-        DeptMapper depImp = sqlSession.getMapper(DeptMapper.class);
-        Dept dept = new Dept();
-        dept.setDName("教学部");
-        dept.setLoc("北京");
-        System.out.println(dept);
-        depImp.addDept2(dept);
-        System.out.println(dept);//通过结果观察到，主键的值填回给了引用对象
+    public void testUpdateENameByEno(){
+        EmpMapper empImp = sqlSession.getMapper(EmpMapper.class);
+        //System.out.println(emp.getEmpNo());
+        empImp.updateEmpByEmpNo(7942,"李四");
+        //System.out.println(emp.getEmpNo());//通过结果观察到，主键的值填回给了引用对象
     }
 
-
+    @Test
+    public void testDeleteEmpByEno(){
+        EmpMapper empImp = sqlSession.getMapper(EmpMapper.class);
+        empImp.deleteEmp(7941);
+    }
 
 
     @After
