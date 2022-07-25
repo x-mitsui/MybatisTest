@@ -50,6 +50,17 @@ public class Test02 {
         System.out.println(dept);//通过结果观察到，主键的值填回给了引用对象
     }
 
+    @Test
+    public void testAddDept2(){
+        DeptMapper depImp = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = new Dept();
+        dept.setDName("教学部");
+        dept.setLoc("北京");
+        System.out.println(dept);
+        depImp.addDept2(dept);
+        System.out.println(dept);//通过结果观察到，主键的值填回给了引用对象
+    }
+
     @After
     public void bbb() {
         sqlSession.close();

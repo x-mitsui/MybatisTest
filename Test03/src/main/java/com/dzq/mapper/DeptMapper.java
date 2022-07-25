@@ -10,4 +10,5 @@ import com.dzq.pojo2.Dept;
  */
 public interface DeptMapper {
     void addDept(Dept dept);
+    void addDept2(Dept dept);
 }

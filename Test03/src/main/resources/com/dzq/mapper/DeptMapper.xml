@@ -9,4 +9,13 @@
         insert into Dept values(DEFAULT ,#{DName},#{Loc});
     </insert>
 
+    <insert id="addDept2" parameterType="Dept" useGeneratedKeys="true" keyProperty="deptNo">
+        <selectKey order="AFTER" keyProperty="deptNo" resultType="int">
+            select @@identity
+        </selectKey>
+        insert into Dept values(DEFAULT ,#{DName},#{Loc});
+    </insert>
+
+
+
 </mapper>
