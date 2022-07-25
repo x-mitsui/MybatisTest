@@ -15,8 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Auther: x_mitsui
@@ -98,8 +97,25 @@ public class Test04 {
         System.out.println(result);
     }
 
+    @Test
+    public void testFindEmpByEmpNos1(){
+        EmpMapper2 empImp = sqlSession.getMapper(EmpMapper2.class);
+        Emp emp = new Emp();
+        List<Emp> emps = empImp.findEmpByEmpNos1(new int[]{7968,7782,7788});
+        emps.forEach(System.out::println);
+    }
 
-
+    @Test
+    public void testFindEmpByEmpNos2(){
+        EmpMapper2 empImp = sqlSession.getMapper(EmpMapper2.class);
+        List list = new ArrayList();
+        //list.add(7698);
+        //list.add(7782);
+        //list.add(7788);
+        Collections.addAll(list,7698,7782,7788);
+        List<Emp> emps = empImp.findEmpByEmpNos2(list);
+        emps.forEach(System.out::println);
+    }
 
     @After
     public void bbb() {

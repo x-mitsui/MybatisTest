@@ -137,4 +137,34 @@
         </trim>
         where EMPNO=#{EmpNo}
     </update>
+
+    <select id="findEmpByEmpNos1" resultType="Emp">
+        <!--
+            collection:指明遍历的是数组还是集合
+            item:中间变量名
+            open：以什么开头
+            close：以什么结尾
+            separator：分隔符
+        -->
+        select <include refid="sqlColum"></include> from EMP where empno in
+        <foreach collection="array" separator="," open="(" close=")" item="deptno">
+            #{deptno}
+        </foreach>
+
+    </select>
+
+    <select id="findEmpByEmpNos2" resultType="Emp">
+        <!--
+            collection:指明遍历的是数组还是集合
+            item:中间变量名
+            open：以什么开头
+            close：以什么结尾
+            separator：分隔符
+        -->
+        select <include refid="sqlColum"></include> from EMP where empno in
+        <foreach collection="list" separator="," open="(" close=")" item="deptno">
+            #{deptno}
+        </foreach>
+
+    </select>
 </mapper>
