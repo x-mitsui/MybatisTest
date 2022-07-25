@@ -76,6 +76,17 @@ public class Test04 {
         emps.forEach(System.out::println);
     }
 
+    @Test
+    public void testUpdateEmpByCondition() throws ParseException {
+        EmpMapper2 empImp = sqlSession.getMapper(EmpMapper2.class);
+        Emp emp = new Emp();
+        emp.setEmpNo(7943);
+        emp.setEName("赵五");
+        emp.setHireDate(new SimpleDateFormat("yyyy-MM-dd").parse("1990-08-03"));
+        int result = empImp.updateEmpByCondition(emp);
+        System.out.println(result);
+    }
+
 
 
 

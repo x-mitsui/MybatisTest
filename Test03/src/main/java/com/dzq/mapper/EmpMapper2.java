@@ -21,5 +21,6 @@ public interface EmpMapper2 {
 
     List<Emp> findEmpByCondition2(Emp emp);
 
+    int updateEmpByCondition(Emp emp);
 
 }
