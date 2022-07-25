@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dzq.mapper.EmpMapper2">
+    <select id="findEmpByCondition" resultType="Emp">
+        select * from emp where 1=1
+        <if test="EmpNo != null">
+            and EMPNO = #{EmpNo}
+        </if>
+        <if test="EName !=null and EName!=''">
+            and EName = #{EName}
+#             and EName like concat('%',#{EName},'%');
+        </if>
+
+
+    </select>
+
+</mapper>
