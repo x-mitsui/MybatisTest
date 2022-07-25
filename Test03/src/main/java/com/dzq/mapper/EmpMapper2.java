@@ -23,4 +23,6 @@ public interface EmpMapper2 {
 
     int updateEmpByCondition(Emp emp);
 
+    int updateEmpByCondition2(Emp emp);
+
 }

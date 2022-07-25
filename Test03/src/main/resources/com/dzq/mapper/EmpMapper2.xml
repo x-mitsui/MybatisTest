@@ -97,4 +97,36 @@
         </set>
         where EMPNO=#{EmpNo}
     </update>
+
+    <update id="updateEmpByCondition2">
+        update emp
+        <!--prefix: 动态添加的前缀-->
+        <!--prefixOverrides: 要去掉的前缀-->
+        <!--suffix: 添加后缀-->
+        <!--suffixOverrides: 要去掉的后缀-->
+        <trim prefix="set" prefixOverrides="," suffix="" suffixOverrides="">
+            <if test="EName !=null and EName!=''">
+                 Ename = #{EName}
+            </if>
+            <if test="Job !=null and Job!=''">
+                , Job = #{Job}
+            </if>
+            <if test="MGR !=null and MGR!=''">
+                , MGR = #{MGR}
+            </if>
+            <if test="HireDate !=null">
+                , HIREDATE = #{HireDate}
+            </if>
+            <if test="Sal !=null">
+                , EName = #{EName}
+            </if>
+            <if test="Comm !=null">
+                , Comm = #{Comm}
+            </if>
+            <if test="DeptNo !=null">
+                , DeptNo = #{DeptNo}
+            </if>
+        </trim>
+        where EMPNO=#{EmpNo}
+    </update>
 </mapper>
