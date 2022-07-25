@@ -44,6 +44,10 @@
                 <when test="EName !=null and EName!=''">
                     and EName = #{EName}
                     #             and EName like concat('%',#{EName},'%');
+
+                    <!--也可以使用bind标签-->
+                    <!--<bind name="likePattern" value="'%'+EName+'%'"/>-->
+                    <!--and EName like #{likePattern}-->
                 </when>
                 <when test="Job !=null and Job!=''">
                     and Job = #{Job}
@@ -74,7 +78,7 @@
         update emp
         <set>
             <if test="EName !=null and EName!=''">
-                , ename = #{EName}
+                Ename = #{EName}
             </if>
             <if test="Job !=null and Job!=''">
                 , Job = #{Job}
