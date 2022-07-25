@@ -28,6 +28,8 @@
     </environments>
     <mappers>
         <!--通过类的全路径去找Mapper映射文件，名字得一样，且在out下同一目录下-->
-        <mapper class="com.dzq.mapper.EmpMapper"/>
+        <!--<mapper class="com.dzq.mapper.EmpMapper"/>-->
+        <!--<mapper class="com.dzq.mapper.DeptMapper"/>-->
+        <package name="com.dzq.mapper"/>
     </mappers>
 </configuration>
