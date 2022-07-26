@@ -29,7 +29,7 @@
     <mappers>
         <!--通过类的全路径去找Mapper映射文件，名字得一样，且在out下同一目录下-->
         <mapper class="com.dzq.mapper5.EmpMapper5"/>
-        <!--<mapper class="com.dzq.mapper.DeptMapper"/>-->
+        <mapper class="com.dzq.mapper5.DeptMapper5"/>
         <!--<package name="com.dzq.mapper"/>-->
     </mappers>
 </configuration>

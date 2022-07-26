@@ -1,6 +1,8 @@
 package com.dzq.test;
 
+import com.dzq.mapper5.DeptMapper5;
 import com.dzq.mapper5.EmpMapper5;
+import com.dzq.pojo5.Dept;
 import com.dzq.pojo5.Emp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -39,10 +41,18 @@ public class Test01 {
     }
 
     @Test
-    public void testFindAll() {
+    public void testOneToOne() {
         EmpMapper5 mapper = sqlSession.getMapper(EmpMapper5.class);
         Emp empJoinDeptByEmpNo = mapper.findEmpJoinDeptByEmpNo(7499);
         System.out.println(empJoinDeptByEmpNo);
+    }
+
+    @Test
+    public void testOneToMany() {
+        DeptMapper5 mapper = sqlSession.getMapper(DeptMapper5.class);
+        Dept deptJoinEmpByDeptNo = mapper.findDeptJoinEmpByDeptNo(20);
+        System.out.println(deptJoinEmpByDeptNo);
+        deptJoinEmpByDeptNo.getEmpList().forEach(System.out::println);
     }
 
     @After

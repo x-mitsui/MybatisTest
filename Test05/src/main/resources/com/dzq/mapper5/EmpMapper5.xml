@@ -27,11 +27,20 @@
         </association>
 
     </resultMap>
+
+
     <select id="findEmpJoinDeptByEmpNo" resultMap="empJoinDept">
         select * from emp
             left join DEPT D
                 on D.DEPTNO = EMP.DEPTNO
         where EMPNO = #{empno};
+    </select>
+
+    <select id="findDeptJoinEmpByDeptNo" resultMap="empJoinDept">
+        select * from DEPT D
+            left join EMP E
+                on D.DEPTNO = E.DEPTNO
+        where D.DEPTNO=#{deptno};
     </select>
 
 </mapper>
