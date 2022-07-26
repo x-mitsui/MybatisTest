@@ -2,8 +2,11 @@ package com.dzq.test;
 
 import com.dzq.mapper5.DeptMapper5;
 import com.dzq.mapper5.EmpMapper5;
+import com.dzq.mapper5.ProjectMapper5;
 import com.dzq.pojo5.Dept;
 import com.dzq.pojo5.Emp;
+import com.dzq.pojo5.Project;
+import com.dzq.pojo5.ProjectRecord;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,9 +17,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @Auther: x_mitsui
@@ -53,6 +53,21 @@ public class Test01 {
         Dept deptJoinEmpByDeptNo = mapper.findDeptJoinEmpByDeptNo(20);
         System.out.println(deptJoinEmpByDeptNo);
         deptJoinEmpByDeptNo.getEmpList().forEach(System.out::println);
+    }
+
+    @Test
+    public void testManyToMany() {
+        ProjectMapper5 mapper = sqlSession.getMapper(ProjectMapper5.class);
+        Project project = mapper.findProjectByProjectNo(2);
+        System.out.println("------------------");
+        System.out.println(project.getPid());
+        System.out.println(project.getPname());
+        System.out.println(project.getMoney());
+        System.out.println("------------------");
+        for (ProjectRecord projectRecord : project.getProjectRecordList()) {
+            System.out.println("------------------");
+            System.out.println(projectRecord.getEmp());
+        }
     }
 
     @After
