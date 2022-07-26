@@ -1,4 +1,4 @@
-package com.dzq.pojo2;
+package com.dzq.pojo5;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +19,7 @@ import java.util.Date;
 public class Emp implements Serializable {
 //    使用包装类，尽量和数据库保持一致吧，免去麻烦
     private Integer EmpNo;
-    private String Name;
+    private String EName;
     private String Job;
     private String MGR;
     private Date HireDate;//使用父类Date，虽然返回的是sql date
