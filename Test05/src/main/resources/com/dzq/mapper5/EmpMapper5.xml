@@ -3,20 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dzq.mapper5.EmpMapper5">
-    <resultMap id="empResult" type="Emp" >
-        <!--主键用id-->
-        <id column="empno" property="EmpNo"></id>
-        <!--非主键用result-->
-        <result column="name" property="EName"></result>
-        <result column="job" property="Job"></result>
-        <result column="mgr" property="MGR"></result>
-        <result column="hiredate" property="HireDate"></result>
-        <result column="sal" property="Sal"></result>
-        <result column="comm" property="Comm"></result>
-        <result column="deptno" property="DeptNo"></result>
+    <resultMap id="empJoinDept" type="emp">
+        <!--1.设置emp本身的8个属性的映射关系-->
+        <!--1.1主键-->
+        <id column="empno" property="empno"></id>
+        <!--1.2其它-->
+        <result column="ename" property="ename"></result>
+        <result column="job" property="job"></result>
+        <result column="mgr" property="mgr"></result>
+        <result column="hiredate" property="hiredate"></result>
+        <result column="sal" property="sal"></result>
+        <result column="comm" property="comm"></result>
+        <result column="deptno" property="deptno"></result>
+
+        <!--2.设置emp中dept属性部分-->
+        <!--2.1 property为属性名-->
+        <!--2.2 javaType：为该对象赋值的对象的类型-->
+        <!--dept为别名，因为包已经引用-->
+        <association property="dept" javaType="dept">
+            <id column="deptno" property="deptno"></id>
+            <result column="dname" property="dname"></result>
+            <result column="loc" property="loc"></result>
+        </association>
+
     </resultMap>
-    <select id="findAll5" resultMap="empResult">
-        select * from emp;
+    <select id="findEmpJoinDeptByEmpNo" resultMap="empJoinDept">
+        select * from emp
+            left join DEPT D
+                on D.DEPTNO = EMP.DEPTNO
+        where EMPNO = #{empno};
     </select>
 
 </mapper>

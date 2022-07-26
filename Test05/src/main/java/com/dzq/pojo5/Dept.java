@@ -16,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Dept implements Serializable {
-    private Integer deptNo;
-    private String DName;
-    private String Loc;
+    private Integer deptno;
+    private String dname;
+    private String loc;
 }

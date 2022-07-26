@@ -11,5 +11,9 @@ import java.util.List;
  * @version: 1.0
  */
 public interface EmpMapper5 {
-    List<Emp> findAll5();
+    /**
+     * 根据员工编号查询员工详细信息以及部门信息
+     * @return EMP对象，组合了Dept对象
+     */
+    Emp findEmpJoinDeptByEmpNo(int EmpNo);
 }

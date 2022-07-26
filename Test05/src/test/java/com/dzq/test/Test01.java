@@ -40,9 +40,9 @@ public class Test01 {
 
     @Test
     public void testFindAll() {
-        EmpMapper5 empImp = sqlSession.getMapper(EmpMapper5.class);
-        List<Emp> empList = empImp.findAll5();
-        empList.forEach(System.out::println);
+        EmpMapper5 mapper = sqlSession.getMapper(EmpMapper5.class);
+        Emp empJoinDeptByEmpNo = mapper.findEmpJoinDeptByEmpNo(7499);
+        System.out.println(empJoinDeptByEmpNo);
     }
 
     @After

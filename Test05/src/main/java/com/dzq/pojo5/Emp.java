@@ -18,12 +18,14 @@ import java.util.Date;
 @Data
 public class Emp implements Serializable {
 //    使用包装类，尽量和数据库保持一致吧，免去麻烦
-    private Integer EmpNo;
-    private String EName;
-    private String Job;
-    private String MGR;
-    private Date HireDate;//使用父类Date，虽然返回的是sql date
-    private Double Sal;
-    private Double Comm;
-    private Integer DeptNo;
+    private Integer empno;
+    private String ename;
+    private String job;
+    private String mgr;
+    private Date hiredate;//使用父类Date，虽然返回的是sql date
+    private Double sal;
+    private Double comm;
+    private Integer deptno;
+
+    private Dept dept;
 }
