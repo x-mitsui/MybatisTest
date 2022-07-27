@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dzq.mapper7.DeptMapper7">
+    <resultMap id="deptJoinEmps" type="dept">
+        <id property="deptno" column="deptno"></id>
+        <result column="dname" property="dname"></result>
+        <result column="dname" property="dname"></result>
+
+        <!--column:指明resultMap传入findEmpByDeptNo的参数-->
+        <!--javaType：select查询数据的结果类型-->
+        <!--fetchType：积极加载eager,延迟加载lazy：用到才会加载这个对应sql-->
+        <collection property="empList"
+                    select="com.dzq.mapper7.EmpMapper7.findEmpByDeptNo"
+                    javaType="list"
+                    column="deptno"
+                    jdbcType="INTEGER"
+                    fetchType="lazy"
+        >
+
+        </collection>
+    </resultMap>
+
+    <select id="findDeptByDeptNo" resultMap="deptJoinEmps">
+        select * from DEPT D
+                where D.DEPTNO = #{deptno}
+    </select>
+
+</mapper>
